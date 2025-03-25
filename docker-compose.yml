@@ -1,0 +1,22 @@
+services:
+  tip90server:
+    container_name: tip90server
+    image: tip90server
+    restart: unless-stopped
+    build: .
+    networks: 
+      - nginxproxymanager_default
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+  
+    ports:
+      - "7100:7200"
+    command: ["node", "app.js"]
+  
+networks:
+  nginxproxymanager_default:
+    name: nginxproxymanager_default
+    external: true
+

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://tips90predict.com/favicon.ico" type="image/x-icon">
+    <meta name="author" content="Tips90predictions">
+
+    <title>Tips90predict API</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #01031f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #080a30;
+            border-radius: 12px;
+            padding: 40px 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            border: 1px solid #050827;
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            width: 180px;
+            height: auto;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(46, 243, 46, 0.1);
+            color: #2ef32e;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #2ef32e;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #ff3269;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .description {
+            color: #efeff1;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            padding: 0 20px;
+        }
+
+        .stat-card {
+            background-color: #050827;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #01031f;
+        }
+
+        .stat-value {
+            color: #2ef32e;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #617092;
+            font-size: 14px;
+        }
+
+        .docs-button {
+            display: inline-block;
+            background-color: #2ef32e;
+            color: #01031f;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .docs-button:hover {
+            background-color: #25c525;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 243, 46, 0.2);
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: #617092;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            padding: 20px 0;
+        }
+
+        .social-links {
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        .social-image {
+            width: 24px;
+            height: 24px;
+            opacity: 0.9;
+            object-fit: cover;
+            object-position: center;
+            transition: opacity 0.2s;
+        }
+
+        .social-image:hover {
+            opacity: 1;
+        }
+
+        .footer a {
+            color: #ff3269;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #2ef32e;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            Server Online
+        </div>
+        <h1>Welcome to Tips90predictions API</h1>
+        <p class="description">
+            Our API server is up and running. For access and integration details, please refer to our API documentation.
+        </p>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">< 100ms</div>
+                <div class="stat-label">Response Time</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">v1.0.0</div>
+                <div class="stat-label">API Version</div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Need help? Contact us at <a href="mailto:charismawinningtips@gmail.com">charismawinningtips@gmail.com</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
