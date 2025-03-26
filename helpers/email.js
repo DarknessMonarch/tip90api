@@ -60,7 +60,7 @@ exports.sendWelcomeEmail = async (email, username) => {
 
   return sendTemplatedEmail({
     to: email,
-    subject: 'Welcome to 433tips',
+    subject: 'Welcome to tips90prediction',
     templatePath: path.join(__dirname, '../client/welcome.html'),
     replacements: { username }
   });
