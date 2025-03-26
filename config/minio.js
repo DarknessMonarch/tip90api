@@ -1,5 +1,7 @@
 const Minio = require('minio');
 const axios = require('axios');
+const path = require('path');
+const fs = require('fs');
 
 class MinioService {
   constructor() {
@@ -42,7 +44,7 @@ class MinioService {
 
   async getDefaultProfileImage() {
     try {
-      const defaultImageKey = '../profile/profile.jpg';
+      const defaultImageKey = 'defaults/profile.jpg';
       
       let exists = false;
       try {
@@ -53,21 +55,27 @@ class MinioService {
       }
       
       if (!exists) {
-        const path = require('path');
-        const fs = require('fs');
         const defaultImagePath = path.join(__dirname, '../profile/profile.jpg');
         
-        const fileBuffer = fs.readFileSync(defaultImagePath);
-        
-        await this.minioClient.putObject(this.bucketName, defaultImageKey, fileBuffer, {
-          'Content-Type': 'image/png'
-        });
+        try {
+          const fileBuffer = fs.readFileSync(defaultImagePath);
+          
+          // Upload to MinIO with correct content type
+          await this.minioClient.putObject(this.bucketName, defaultImageKey, fileBuffer, {
+            'Content-Type': 'image/jpeg'
+          });
+          
+          console.log(`Default profile image uploaded to ${defaultImageKey}`);
+        } catch (readError) {
+          console.error('Error reading default profile image file:', readError);
+          return `https://${process.env.MINIO_ENDPOINT}/${this.bucketName}/defaults/default-profile.jpg`;
+        }
       }
       
       return this.getObjectUrl(defaultImageKey);
     } catch (error) {
       console.error('Error getting default profile image:', error);
-      return `https://${process.env.MINIO_ENDPOINT}/${this.bucketName}/defaults/default-profile.png`;
+      return `https://${process.env.MINIO_ENDPOINT}/${this.bucketName}/defaults/default-profile.jpg`;
     }
   }
 
@@ -75,9 +83,8 @@ class MinioService {
     try {
       if (!imageUrl) return false;
       
-      // If the URL is not from our MinIO server, don't attempt to remove it
       if (!this.isMinioUrl(imageUrl)) {
-        return true; // Return true to indicate no error, but nothing was removed
+        return true; 
       }
       
       const urlPath = new URL(imageUrl).pathname;
